@@ -1,0 +1,419 @@
+<htm>
+
+    <head>
+        <title>Meta moscow</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <div id="front_black"></div>
+
+        <div id="logo" style="width: 100%; text-align: center; margin: 8% 0%;">
+            <img src="image/logo.png" width="80%">
+        </div>
+
+        <div id="info">
+            <div id="ihead">  </div>
+            <div id="ibody">  </div>
+        </div>
+
+        <div id="who">
+            <div id="bottom"></div>
+            <div id="left"></div>
+            <div id="top"></div>
+            <div id="right"></div>
+            <p id="who_text"></p>
+        </div>
+
+
+        <div id="ind">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <div id="ind2">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+
+        <div id="panel">
+            <div id="strategy">STRATEGY</div>
+            <div id="creative">CREATIVE</div>
+            <div id="web">WEB</div>
+            <div id="advertising">ADVERTISING</div>
+            <div id="cross"><img src="image/cross.png"></div>
+
+        </div>
+
+    </body>
+</htm>
+
+
+
+<script type="application/javascript">
+
+    var circlestop=false;
+
+    $( document ).ready(function() {
+        //printText("#text","test printing",0,function(){ alert("Finish!");})
+        //printText("#text2","test printing",0,function(){ alert("Finish!");})
+        circle("ind2",0);
+
+        setTimeout(function(){
+            $("#ind2").fadeOut(2000);
+            $('#front_black').animate({'opacity':'0' }, 2000,function(){
+                circlestop=true;
+                $("#ind").fadeIn(1);
+                $("#front_black").fadeOut(1);
+
+                drawWho();
+            });
+        }, 30);
+
+    });
+
+    $("#cross img").click(function() {
+        $("#panel").fadeOut(1000,function(){
+            $("#ind").fadeIn(1000);
+        });
+    });
+
+    $("#ind").click(function() {
+        $("#ind").fadeOut(1000,function(){
+            $("#panel").fadeIn(1000);
+        });
+    });
+
+    function circle(id,angle)
+    {
+        if(circlestop) return;
+        var elem=document.getElementById(id);
+        kcRotate(elem,angle);
+        if(angle>=180) angle=0;
+        setTimeout(function(){circle(id,angle+15)}, 100);
+    }
+
+    function printText(id,text,position,finish,speed)
+    {
+        if (typeof speed == 'undefined') speed=100;
+        var char = text.charAt(position);
+        if(char==".") char=".<br/>"
+        $(id).html($(id).html()+char);
+
+        if(text.length>position+1)
+        {
+            setTimeout(function(){printText(id,text,position+1,finish,speed)}, speed);
+        }
+        else
+        {
+            finish();
+        }
+    }
+
+    function kcRotate(elem,deg){
+
+        var Dx;
+        var Dy;
+        var iecos;
+        var iesin;
+        var halfWidth;
+        var halfHeight;
+        var dummy;
+
+        //degrees to radians
+        var rad=deg*(Math.PI/180);
+
+        //get sine and cosine of rotation angle
+        iecos=Math.cos(rad);
+        iesin=Math.sin(rad);
+
+        //get element's size
+        halfWidth=elem.offsetWidth/2;
+        halfHeight=elem.offsetHeight/2;
+
+        //calculating position correction values
+        Dx=-halfWidth*iecos + halfHeight*iesin + halfWidth;
+        Dy=-halfWidth*iesin - halfHeight*iecos + halfHeight;
+
+        //applying CSS3 rotation
+        elem.style.transform="rotate("+rad+"rad)";
+
+        //vendor prefixed rotations
+        elem.style.mozTransform="rotate("+rad+"rad)";
+        elem.style.webkitTransform="rotate("+rad+"rad)";
+        elem.style.OTransform="rotate("+rad+"rad)";
+        elem.style.msTransform="rotate("+rad+"rad)";
+
+        //rotation Matrix for IExplorer
+        elem.style.filter="progid:DXImageTransform.Microsoft.Matrix(M11="+iecos+", M12="+-iesin+", M21="+iesin+", M22="+iecos+", Dx="+Dx+", Dy="+Dy+", SizingMethod=auto expand)";
+        elem.style.msFilter="progid:DXImageTransform.Microsoft.Matrix(M11="+iecos+", M12="+-iesin+", M21="+iesin+", M22="+iecos+", Dx="+Dx+", Dy="+Dy+", SizingMethod=auto expand)";
+
+        //Fixing black box issue on IE9
+        dummy=document.createElement("div");
+        dummy.innerHTML='';
+        if(dummy.getElementsByTagName("br").length==1) elem.style.filter="none";
+        delete dummy;
+
+    }
+
+    function ReduceLogo(finish)
+    {
+        $("#logo").animate({'margin-top':'3%' }, 1000,function(){  });
+        $("#logo").animate({'margin-bottom':'5%' }, 1000,function(){  });
+        $("#logo img").animate({'width':'40%' }, 2000,function(){ finish() });
+
+    }
+
+    function drawWho()
+    {
+        printText("#who_text","WHO WE ARE",0,function(){},500);
+        $("#bottom").animate({'left':'0' }, 1000,function(){
+            $("#left").animate({'top':'0' }, 1000,function(){
+                $("#top").animate({'width':'100%' }, 1000,function(){
+                    $("#right").animate({'height':'100%' }, 1000,function(){
+
+                    });
+                });
+            });
+        });
+    }
+
+
+    $("#strategy").click(function(){
+        ReduceLogo(function(){
+
+            $("#ihead").removeClass();
+            $("#ihead").addClass( "strategy" );
+            printText("#ihead","Strategy",0,function(){
+                printText("#ibody","META is branding laboratory, based in Moscow, witch specializes in products of Premium Segment.\
+            Looking at the world through the prism of Metaphysics we see the process that underlie the \
+            success of any projects.\
+            We build out outlook on the aesthetics and philosophy, trying to understand the depth of the human \
+            mind, using this experience to create masterpieces of creative art of branding.",0,function(){
+                });
+            });
+
+        });
+
+
+
+
+    });
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<style>
+
+    .strategy{
+        font: 23px Pancetta_Serif_Pro_Regular;
+    }
+
+    #who div{
+        background-color: black;
+        position: absolute;
+    }
+
+    #who{
+        width: 140px;
+        height: 30px;
+        position: absolute;
+        top:85%;
+        left: calc(50% - 4em);
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    #who p{
+        margin: 8px 20px;
+        font: 16px cour;
+        font-weight: bold;
+    }
+
+    #bottom{
+        top: 93%;
+        width: 100%;
+        left: 100%;
+        height: 2px;
+    }
+
+    #left{
+        width: 2px;
+        height: 100%;
+        top: 100%;
+    }
+
+    #top{
+        top: 0%;
+        width: 0%;
+        height: 2px;
+    }
+
+    #right{
+        width: 2px;
+        height: 0%;
+        right: 0%;
+    }
+
+    #ibody{
+        margin-top: 3%;
+        font: 14px OratorStd;
+        width: 50%;
+        display: inline-block;
+        text-align: left;
+    }
+
+
+    #front_black{
+        position: fixed;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+        background-color: black;
+        opacity: 0.95;
+    }
+
+    #info{
+        width: 100%;
+        text-align: center;
+    }
+
+    #ind div{
+        width: 25px;
+        height: 3px;
+        background-color: black;
+        margin: 3px;
+    }
+
+    #ind {
+        position: absolute;
+        top:95%;
+        left: calc(50% - 1em);
+        display: none;
+        cursor: pointer;
+    }
+
+
+    #ind2 div{
+        width: 25px;
+        height: 3px;
+        background-color: black;
+        margin: 3px;
+    }
+
+    #ind2 {
+        position: absolute;
+        top:95%;
+        left: calc(50% - 1em);
+    }
+
+    #panel {
+        position: absolute;
+        width: 99%;
+        height: 5%;
+        top: 95%;
+        background-color: black;
+        z-index: 1000;
+        display: none;
+        text-align: center;
+        font: 17px cour;
+    }
+
+    #cross img{
+        max-height:100%;
+        cursor: pointer;
+    }
+
+    #strategy
+    {
+        display: inline-block;
+        position: absolute;
+        color: white;
+        margin-left: -45%;
+        margin-top: 0.6%;
+        cursor: pointer;
+    }
+
+    #creative
+    {
+        display: inline-block;
+        position: absolute;
+        color: white;
+        margin-left: -20%;
+        margin-top: 0.6%;
+        cursor: pointer;
+    }
+
+    #web
+    {
+        display: inline-block;
+        position: absolute;
+        color: white;
+        margin-left: 20%;
+        margin-top: 0.6%;
+        cursor: pointer;
+    }
+
+    #advertising
+    {
+        display: inline-block;
+        position: absolute;
+        color: white;
+        margin-left: 35%;
+        margin-top: 0.6%;
+        cursor: pointer;
+    }
+
+@font-face {
+    font-family: alienleague;
+    src: url(font/alienleague.ttf);
+}
+
+@font-face {
+    font-family: cour;
+    src: url(font/cour.ttf);
+}
+
+@font-face {
+    font-family: Pancetta_Serif_Pro_Regular;
+    src: url(font/Pancetta_Serif_Pro_Regular.otf);
+}
+
+
+@font-face {
+    font-family: Pushkin;
+    src: url(font/Pushkin.ttf);
+}
+
+@font-face {
+    font-family: Raleway-Regular;
+    src: url(font/Raleway-Regular.ttf);
+}
+
+@font-face {
+    font-family: Pixel_Berry_08_84_Ltd;
+    src: url(font/Pixel_Berry_08_84_Ltd.Edition.TTF);
+}
+
+    @font-face {
+        font-family: OratorStd;
+        src: url(font/OratorStd.otf);
+    }
+
+
+
+</style>
