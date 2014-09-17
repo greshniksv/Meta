@@ -82,9 +82,27 @@
     });
 
     $("#cross img").click(function() {
-        $("#panel").fadeOut(1000,function(){
-            $("#ind").fadeIn(1000);
+        $("#ihead").fadeOut(100);
+        $("#ibody").fadeOut(100);
+
+        BackLogo(function(){
+            stopprint=true;
+
+            $("#ihead").html("");
+            $("#ibody").html("");
+
+            setTimeout(function(){
+                stopprint=false;
+                $("#ihead").removeClass();
+                $("#ihead").addClass( "strategy" );
+
+                $("#panel").fadeOut(1000,function(){
+                    $("#ind").fadeIn(1000);
+                });
+
+            }, 200);
         });
+
     });
 
     $("#ind").click(function() {
@@ -168,9 +186,25 @@
 
     function ReduceLogo(finish)
     {
+        $("#ihead").html("");
+        $("#ibody").html("");
+
+        $("#ihead").fadeIn(100);
+        $("#ibody").fadeIn(100);
+
+        $("#isoc").fadeOut(1);
         $("#logo").animate({'margin-top':'0%' }, 1000,function(){  });
-        $("#logo").animate({'margin-bottom':'3%' }, 1000,function(){  });
+        $("#logo").animate({'margin-bottom':'4%' }, 1000,function(){  });
         $("#logo img").animate({'width':'35%' }, 2000,function(){ finish() });
+
+    }
+
+    function BackLogo(finish)
+    {
+        $("#isoc").fadeOut(1);
+        $("#logo").animate({'margin-top':'4%' }, 1000,function(){  });
+        $("#logo").animate({'margin-bottom':'0%' }, 1000,function(){  });
+        $("#logo img").animate({'width':'50%' }, 2000,function(){ finish() });
 
     }
 
@@ -344,7 +378,7 @@
     @media (max-width: 9000px) {
         #who p{
             font: 16px cour;
-            margin: 5% 24%;
+            /*margin: 5% 24%;*/
         }
 
         #who{
@@ -387,7 +421,7 @@
     @media (max-width: 1540px) {
         #who p{
             font: 14px cour;
-            margin: 5% 22%;
+            /*margin: 5% 22%;*/
         }
 
         #who{
@@ -415,8 +449,8 @@
 
     @media (max-width: 1360px) {
         #who p{
-            font: 14px cour;
-            margin: 5% 15%;
+            font: 12px cour;
+            /*margin: 5% 15%;*/
         }
 
         #who{
@@ -457,10 +491,10 @@
         }
     }
 
-    @media (max-width: 1089px) {
+    @media (max-width: 1099px) {
         #who p{
-            font: 12px cour;
-            margin: 5% 13%;
+            font: 10px cour;
+            /*margin: 5% 13%;*/
         }
 
         #who{
@@ -505,10 +539,10 @@
         }
     }
 
-    @media (max-width: 890px) {
+    @media (max-width: 925px) {
         #who p{
-            font: 9px cour;
-            margin: 5% 13%;
+            font: 8px cour;
+            /*margin: 5% 13%;*/
         }
         #who{
             height: 3%;
@@ -554,7 +588,7 @@
     @media (max-width: 500px) {
         #who p{
             font: 8px cour;
-            margin: 5% 13%;
+            /*margin: 5% 13%;*/
         }
         #panel {
             font: 10px cour;
@@ -615,7 +649,7 @@
     }
 
     #who{
-        width: 11%;
+        width: 13%;
         /*height: 3%;*/
         position: absolute;
         top:85%;
@@ -626,7 +660,12 @@
     }
 
     #who p{
-        /*margin: 5% 13%;*/
+        margin: 0;
+        position: absolute;
+        top:50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
         /*font: 16px cour;*/
         font-weight: bold;
     }
