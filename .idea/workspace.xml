@@ -26,12 +26,11 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="183" column="0" selection-start="5079" selection-end="5079" vertical-scroll-proportion="0.30895796" vertical-offset="1854" max-vertical-offset="6120">
+            <state line="166" column="46" selection-start="4577" selection-end="4577" vertical-scroll-proportion="0.43103448" vertical-offset="1747" max-vertical-offset="12206">
               <folding>
                 <element signature="n#style#0;n#div#1;n#body#0;n#htm#0;n#!!top" expanded="true" />
-                <element signature="e#2141#2345#0" expanded="false" />
-                <element signature="e#2405#2779#0" expanded="false" />
-                <element signature="e#2812#4364#0" expanded="false" />
+                <element signature="e#2168#2372#0" expanded="false" />
+                <element signature="e#2868#4420#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -54,9 +53,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1375" />
+    <option name="x" value="1391" />
     <option name="y" value="7" />
-    <option name="width" value="1345" />
+    <option name="width" value="1329" />
     <option name="height" value="720" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -124,7 +123,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1375" y="7" width="1345" height="720" extended-state="0" />
+    <frame x="1391" y="7" width="1329" height="720" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -132,7 +131,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24981189" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25285605" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -164,13 +163,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="49" selection-start="90" selection-end="90" vertical-scroll-proportion="0.09107143" vertical-offset="0" max-vertical-offset="560">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1196" column="3" selection-start="18153" selection-end="18153" vertical-scroll-proportion="0.44880545" vertical-offset="20069" max-vertical-offset="64821">
@@ -180,12 +172,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="183" column="0" selection-start="5079" selection-end="5079" vertical-scroll-proportion="0.30895796" vertical-offset="1854" max-vertical-offset="6120">
+        <state line="166" column="46" selection-start="4577" selection-end="4577" vertical-scroll-proportion="0.43103448" vertical-offset="1747" max-vertical-offset="12206">
           <folding>
             <element signature="n#style#0;n#div#1;n#body#0;n#htm#0;n#!!top" expanded="true" />
-            <element signature="e#2141#2345#0" expanded="false" />
-            <element signature="e#2405#2779#0" expanded="false" />
-            <element signature="e#2812#4364#0" expanded="false" />
+            <element signature="e#2168#2372#0" expanded="false" />
+            <element signature="e#2868#4420#0" expanded="false" />
           </folding>
         </state>
       </provider>

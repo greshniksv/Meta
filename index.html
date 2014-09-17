@@ -56,6 +56,7 @@
 <script type="application/javascript">
 
     var circlestop=false;
+    var stopprint = false;
 
     $( document ).ready(function() {
         //printText("#text","test printing",0,function(){ alert("Finish!");})
@@ -98,9 +99,10 @@
 
     function printText(id,text,position,finish,speed)
     {
+        if(stopprint) return;
         if (typeof speed == 'undefined') speed=100;
         var char = text.charAt(position);
-        if(char==".") char=".<br/>"
+        if(char=="~") char="<br/>"
         $(id).html($(id).html()+char);
 
         if(text.length>position+1)
@@ -162,7 +164,7 @@
     function ReduceLogo(finish)
     {
         $("#logo").animate({'margin-top':'3%' }, 1000,function(){  });
-        $("#logo").animate({'margin-bottom':'5%' }, 1000,function(){  });
+        $("#logo").animate({'margin-bottom':'3%' }, 1000,function(){  });
         $("#logo img").animate({'width':'40%' }, 2000,function(){ finish() });
 
     }
@@ -184,23 +186,127 @@
 
     $("#strategy").click(function(){
         ReduceLogo(function(){
+            stopprint=true;
 
-            $("#ihead").removeClass();
-            $("#ihead").addClass( "strategy" );
-            printText("#ihead","Strategy",0,function(){
-                printText("#ibody","META is branding laboratory, based in Moscow, witch specializes in products of Premium Segment.\
+            $("#ihead").html("");
+            $("#ibody").html("");
+
+            setTimeout(function(){
+                stopprint=false;
+                $("#ihead").removeClass();
+                $("#ihead").addClass( "strategy" );
+                printText("#ihead","Strategy",0,function(){
+                    printText("#ibody","META is branding laboratory, based in Moscow, witch specializes in products of Premium Segment.~\
             Looking at the world through the prism of Metaphysics we see the process that underlie the \
-            success of any projects.\
+            success of any projects.~\
             We build out outlook on the aesthetics and philosophy, trying to understand the depth of the human \
-            mind, using this experience to create masterpieces of creative art of branding.",0,function(){
+            mind, using this experience to create masterpieces of creative art of branding.~",0,function(){
+                    });
                 });
-            });
 
+            }, 200);
         });
+    });
 
 
 
+    $("#creative").click(function(){
+        ReduceLogo(function(){
+            stopprint=true;
 
+            $("#ihead").html("");
+            $("#ibody").html("");
+
+            setTimeout(function(){
+                stopprint=false;
+                $("#ihead").removeClass();
+                $("#ihead").addClass( "creative" );
+                printText("#ihead","Creative",0,function(){
+                    printText("#ibody","META is branding laboratory, based in Moscow, witch specializes in products of Premium Segment.~\
+            Looking at the world through the prism of Metaphysics we see the process that underlie the \
+            success of any projects.~\
+            We build out outlook on the aesthetics and philosophy, trying to understand the depth of the human \
+            mind, using this experience to create masterpieces of creative art of branding.~",0,function(){
+                    });
+                });
+
+            }, 200);
+        });
+    });
+
+
+    $("#web").click(function(){
+        ReduceLogo(function(){
+            stopprint=true;
+
+            $("#ihead").html("");
+            $("#ibody").html("");
+
+            setTimeout(function(){
+                stopprint=false;
+                $("#ihead").removeClass();
+                $("#ihead").addClass( "web" );
+                printText("#ihead","Web",0,function(){
+                    printText("#ibody","META is branding laboratory, based in Moscow, witch specializes in products of Premium Segment.~\
+            Looking at the world through the prism of Metaphysics we see the process that underlie the \
+            success of any projects.~\
+            We build out outlook on the aesthetics and philosophy, trying to understand the depth of the human \
+            mind, using this experience to create masterpieces of creative art of branding.~",0,function(){
+                    });
+                });
+
+            }, 200);
+        });
+    });
+
+
+    $("#advertising").click(function(){
+        ReduceLogo(function(){
+            stopprint=true;
+
+            $("#ihead").html("");
+            $("#ibody").html("");
+
+            setTimeout(function(){
+                stopprint=false;
+                $("#ihead").removeClass();
+                $("#ihead").addClass( "advertising" );
+                printText("#ihead","Advertising",0,function(){
+                    printText("#ibody","META is branding laboratory, based in Moscow, witch specializes in products of Premium Segment.~\
+            Looking at the world through the prism of Metaphysics we see the process that underlie the \
+            success of any projects.~\
+            We build out outlook on the aesthetics and philosophy, trying to understand the depth of the human \
+            mind, using this experience to create masterpieces of creative art of branding.~",0,function(){
+                    });
+                });
+
+            }, 200);
+        });
+    });
+
+    $("#who").click(function(){
+        ReduceLogo(function(){
+            stopprint=true;
+
+            $("#ihead").html("");
+            $("#ibody").html("");
+
+            setTimeout(function(){
+                stopprint=false;
+                $("#ihead").removeClass();
+                $("#ihead").addClass( "who" );
+                printText("#ihead","",0,function(){
+                    printText("#ibody","META is branding laboratory, based in Moscow, witch specializes in products of Premium Segment.~\
+            Looking at the world through the prism of Metaphysics we see the process that underlie the \
+            success of any projects.~\
+            We build out outlook on the aesthetics and philosophy, trying to understand the depth of the human \
+            mind, using this experience to create masterpieces of creative art of branding.~\
+            105066, Moscow, 45 Olkhovskaya St.,bdg 1 ~+74957259669, +74957908780~info@metamoscow.com",0,function(){
+                    });
+                });
+
+            }, 200);
+        });
     });
 
 
@@ -218,8 +324,249 @@
 
 <style>
 
+    @media (max-width: 9000px) {
+        #who p{
+            font: 16px cour;
+            margin: 5% 24%;
+        }
+
+        #who{
+            height: 5%;
+        }
+
+        #strategy
+        {
+            margin-top: 0.4%;
+        }
+
+        #creative
+        {
+            margin-top: 0.4%;
+        }
+
+        #web
+        {
+            margin-top: 0.4%;
+        }
+
+        #advertising
+        {
+            margin-top: 0.4%;
+        }
+
+        #ihead{
+            font-size: 23px;
+        }
+
+        #ibody{
+            font-size: 17px;
+        }
+    }
+
+    @media (max-width: 1540px) {
+        #who p{
+            font: 14px cour;
+            margin: 5% 22%;
+        }
+
+        #who{
+            height: 5%;
+        }
+
+        #strategy
+        {
+            margin-top: 0.5%;
+        }
+
+        #ihead{
+            font-size: 20px;
+        }
+
+        #ibody{
+            font-size: 15px;
+        }
+    }
+
+    @media (max-width: 1360px) {
+        #who p{
+            font: 14px cour;
+            margin: 5% 15%;
+        }
+
+        #who{
+            height: 5%;
+        }
+
+        #strategy
+        {
+            margin-top: 0.6%;
+        }
+
+        #creative
+        {
+            margin-top: 0.6%;
+        }
+
+        #web
+        {
+            margin-top: 0.6%;
+        }
+
+        #advertising
+        {
+            margin-top: 0.6%;
+        }
+
+        #ihead{
+            font-size: 18px;
+        }
+
+        #ibody{
+            font-size: 13px;
+        }
+
+    }
+
+    @media (max-width: 1089px) {
+        #who p{
+            font: 12px cour;
+            margin: 5% 13%;
+        }
+
+        #who{
+            height: 4%;
+        }
+
+        #panel {
+            font: 15px cour;
+        }
+
+        #strategy
+        {
+            margin-top: 0.6%;
+        }
+
+        #creative
+        {
+            margin-top: 0.6%;
+        }
+
+        #web
+        {
+            margin-top: 0.6%;
+        }
+
+        #advertising
+        {
+            margin-top: 0.6%;
+        }
+
+        #ihead{
+            font-size: 15px;
+        }
+
+        #ibody{
+            font-size: 11px;
+        }
+    }
+
+    @media (max-width: 890px) {
+        #who p{
+            font: 9px cour;
+            margin: 5% 13%;
+        }
+        #who{
+            height: 3%;
+        }
+        #panel {
+            font: 13px cour;
+        }
+
+        #strategy
+        {
+            margin-top: 1%;
+        }
+
+        #creative
+        {
+            margin-top: 1%;
+        }
+
+        #web
+        {
+            margin-top: 1%;
+        }
+
+        #advertising
+        {
+            margin-top: 1%;
+        }
+
+        #ihead{
+            font-size: 13px;
+        }
+
+        #ibody{
+            font-size: 8px;
+        }
+    }
+
+    @media (max-width: 500px) {
+        #who p{
+            font: 8px cour;
+            margin: 5% 13%;
+        }
+        #panel {
+            font: 10px cour;
+        }
+
+        #strategy
+        {
+            margin-top: 3%;
+        }
+
+        #creative
+        {
+            margin-top: 3%;
+        }
+
+        #web
+        {
+            margin-top: 3%;
+        }
+
+        #advertising
+        {
+            margin-top: 3%;
+        }
+        #ihead{
+            font-size: 11px;
+        }
+
+        #ibody{
+            font-size: 7px;
+        }
+    }
+
+
+    body{
+        overflow: hidden;
+    }
+
     .strategy{
-        font: 23px Pancetta_Serif_Pro_Regular;
+        font-family: Pancetta_Serif_Pro_Regular;
+    }
+
+    .creative{
+        font-family: Pushkin;
+    }
+
+    .web{
+        font-family:Pixel_Berry_08_84_Ltd;
+    }
+
+    .advertising{
+        font-family: alienleague;
     }
 
     #who div{
@@ -228,18 +575,19 @@
     }
 
     #who{
-        width: 140px;
-        height: 30px;
+        width: 11%;
+        /*height: 3%;*/
         position: absolute;
         top:85%;
-        left: calc(50% - 4em);
+        left: 50%;
         cursor: pointer;
         overflow: hidden;
+        transform: translate(-50%, -50%);
     }
 
     #who p{
-        margin: 8px 20px;
-        font: 16px cour;
+        /*margin: 5% 13%;*/
+        /*font: 16px cour;*/
         font-weight: bold;
     }
 
@@ -269,8 +617,8 @@
     }
 
     #ibody{
-        margin-top: 3%;
-        font: 14px OratorStd;
+        margin-top: 1%;
+        font-family: OratorStd;
         width: 50%;
         display: inline-block;
         text-align: left;
@@ -330,7 +678,7 @@
         z-index: 1000;
         display: none;
         text-align: center;
-        font: 17px cour;
+        /*font: 17px cour;*/
     }
 
     #cross img{
@@ -344,7 +692,6 @@
         position: absolute;
         color: white;
         margin-left: -45%;
-        margin-top: 0.6%;
         cursor: pointer;
     }
 
@@ -354,7 +701,6 @@
         position: absolute;
         color: white;
         margin-left: -20%;
-        margin-top: 0.6%;
         cursor: pointer;
     }
 
@@ -364,7 +710,6 @@
         position: absolute;
         color: white;
         margin-left: 20%;
-        margin-top: 0.6%;
         cursor: pointer;
     }
 
@@ -374,7 +719,6 @@
         position: absolute;
         color: white;
         margin-left: 35%;
-        margin-top: 0.6%;
         cursor: pointer;
     }
 
