@@ -8,7 +8,7 @@
     <body>
         <div id="front_black"></div>
 
-        <div id="logo" style="width: 100%; text-align: center; margin: 4% 0%;">
+        <div id="logo" style="width: 100%; text-align: center; margin: 10% 0%;">
             <img src="image/logo.png" width="50%">
         </div>
 
@@ -63,21 +63,20 @@
 
     var circlestop=false;
     var stopprint = false;
+    var logoMinizred = false;
 
     $( document ).ready(function() {
         circle("ind2",0);
         $("#isoc").fadeOut(1);
 
-        setTimeout(function(){
-            $("#ind2").fadeOut(2000);
-            $('#front_black').animate({'opacity':'0' }, 2000,function(){
-                circlestop=true;
-                $("#ind").fadeIn(1);
-                $("#front_black").fadeOut(1);
+        $("#ind2").fadeOut(2000);
+        $('#front_black').animate({'opacity':'0' }, 1,function(){
+            circlestop=true;
+            $("#ind").fadeIn(1);
+            $("#front_black").fadeOut(1);
 
-                drawWho();
-            });
-        }, 3000);
+            drawWho();
+        });
 
     });
 
@@ -96,19 +95,15 @@
                 $("#ihead").removeClass();
                 $("#ihead").addClass( "strategy" );
 
-                $("#panel").fadeOut(1000,function(){
-                    $("#ind").fadeIn(1000);
-                });
+                $("#panel").animate({'top':'100%' }, 1000,function(){  });
 
-            }, 200);
+            }, 10);
         });
 
     });
 
     $("#ind").click(function() {
-        $("#ind").fadeOut(1000,function(){
-            $("#panel").fadeIn(1000);
-        });
+        $("#panel").animate({'top':'95%' }, 1000,function(){  });
     });
 
     function circle(id,angle)
@@ -123,7 +118,8 @@
     function printText(id,text,position,finish,speed)
     {
         if(stopprint) return;
-        if (typeof speed == 'undefined') speed=100;
+
+        if (typeof speed == 'undefined') speed=5;
         var char = text.charAt(position);
         if(char=="~") char="<br/>"
         $(id).html($(id).html()+char);
@@ -186,21 +182,31 @@
 
     function ReduceLogo(finish)
     {
+        $("#isoc").fadeOut(1);
+        if(logoMinizred) {finish(); return;}
+        logoMinizred=true;
         $("#ihead").html("");
         $("#ibody").html("");
 
-        $("#ihead").fadeIn(100);
-        $("#ibody").fadeIn(100);
+        $("#logo").fadeOut(1000,function(){
+            $("#ihead").fadeIn(100);
+            $("#ibody").fadeIn(100);
 
-        $("#isoc").fadeOut(1);
-        $("#logo").animate({'margin-top':'0%' }, 1000,function(){  });
-        $("#logo").animate({'margin-bottom':'4%' }, 1000,function(){  });
-        $("#logo img").animate({'width':'35%' }, 2000,function(){ finish() });
+            $("#logo").animate({'margin-top':'0%' }, 1,function(){  });
+            $("#logo").animate({'margin-bottom':'4%' }, 1,function(){  });
+            $("#logo img").animate({'width':'35%' }, 1,function(){ });
+            $("#logo").fadeIn(1000,function(){
+                finish()
+            });
+        });
+
 
     }
 
     function BackLogo(finish)
     {
+        if(logoMinizred==false){finish(); return;}
+        logoMinizred=false;
         $("#isoc").fadeOut(1);
         $("#logo").animate({'margin-top':'4%' }, 1000,function(){  });
         $("#logo").animate({'margin-bottom':'0%' }, 1000,function(){  });
@@ -210,23 +216,20 @@
 
     function drawWho()
     {
-        printText("#who_text","WHO WE ARE",0,function(){},500);
-        $("#bottom").animate({'left':'0' }, 1000,function(){
-            $("#left").animate({'top':'0' }, 1000,function(){
-                $("#top").animate({'width':'100%' }, 1000,function(){
-                    $("#right").animate({'height':'100%' }, 1000,function(){
+        $("#who_text").html("WHO WE ARE");
 
-                    });
-                });
-            });
+        $("#top").animate({'left':'0' }, 1000,function(){ });
+
+        $("#bottom").animate({'left':'0' }, 1000,function(){
+            $("#right").animate({'height':'100%' }, 1000,function(){});
+            $("#left").animate({'height':'100%' }, 1000,function(){});
         });
     }
 
 
     $("#strategy").click(function(){
+        stopprint=true;
         ReduceLogo(function(){
-            stopprint=true;
-
             $("#ihead").html("");
             $("#ibody").html("");
 
@@ -243,16 +246,15 @@
                     });
                 });
 
-            }, 200);
+            }, 5);
         });
     });
 
 
 
     $("#creative").click(function(){
+        stopprint=true;
         ReduceLogo(function(){
-            stopprint=true;
-
             $("#ihead").html("");
             $("#ibody").html("");
 
@@ -269,15 +271,14 @@
                     });
                 });
 
-            }, 200);
+            }, 5);
         });
     });
 
 
     $("#web").click(function(){
+        stopprint=true;
         ReduceLogo(function(){
-            stopprint=true;
-
             $("#ihead").html("");
             $("#ibody").html("");
 
@@ -294,15 +295,14 @@
                     });
                 });
 
-            }, 200);
+            }, 10);
         });
     });
 
 
     $("#advertising").click(function(){
+        stopprint=true;
         ReduceLogo(function(){
-            stopprint=true;
-
             $("#ihead").html("");
             $("#ibody").html("");
 
@@ -319,13 +319,13 @@
                     });
                 });
 
-            }, 200);
+            }, 10);
         });
     });
 
     $("#who").click(function(){
+        stopprint=true;
         ReduceLogo(function(){
-            stopprint=true;
             $("#isoc").fadeOut(200);
 
             $("#ihead").html("");
@@ -340,13 +340,13 @@
             Looking at the world through the prism of Metaphysics we see the process that underlie the \
             success of any projects.~\
             We build out outlook on the aesthetics and philosophy, trying to understand the depth of the human \
-            mind, using this experience to create masterpieces of creative art of branding.~\
+            mind, using this experience to create masterpieces of creative art of branding.~~\
             105066, Moscow, 45 Olkhovskaya St.,bdg 1 ~+74957259669, +74957908780~info@metamoscow.com",0,function(){
                         $("#isoc").fadeIn(1000);
                     });
                 });
 
-            }, 200);
+            }, 10);
         });
     });
 
@@ -679,20 +679,20 @@
 
     #left{
         width: 2px;
-        height: 100%;
-        top: 100%;
+        height: 0%;
     }
 
     #top{
         top: 0%;
-        width: 0%;
+        width: 100%;
+        left: 100%;
         height: 2px;
     }
 
     #right{
         width: 2px;
         height: 0%;
-        right: 0%;
+        right: 1px;
     }
 
     #ibody{
@@ -712,7 +712,7 @@
         height: 100%;
         z-index: 1000;
         background-color: black;
-        opacity: 0.95;
+        opacity: 0;
     }
 
     #info{
@@ -750,20 +750,30 @@
     }
 
     #panel {
+        left: 0px;
         position: absolute;
-        width: 99%;
+        width: 100%;
         height: 5%;
-        top: 95%;
+        top: 100%;
         background-color: black;
         z-index: 1000;
-        display: none;
+        display: inline-block;
         text-align: center;
+        vertical-align: middle;
+
         /*font: 17px cour;*/
     }
 
-    #cross img{
-        max-height:100%;
+    #cross{
+        height:100%;
         cursor: pointer;
+
+    }
+
+    #cross img{
+        height:80%;
+        cursor: pointer;
+        vertical-align: middle;
     }
 
     #strategy
@@ -789,7 +799,7 @@
         display: inline-block;
         position: absolute;
         color: white;
-        margin-left: 20%;
+        margin-left: 15%;
         cursor: pointer;
     }
 
