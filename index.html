@@ -8,18 +8,19 @@
     <body>
         <div id="front_black"></div>
 
-        <div id="logo" style="width: 100%; text-align: center; margin: 10% 0%;">
-            <img src="image/logo.png" width="50%">
+        <div id="logo" style="width: 100%; height: 100%; text-align: center; ">
+            <img id="logo_img" src="image/logo.png" width="50%">
         </div>
 
         <div id="info">
             <div id="ihead">  </div>
             <div id="ibody">  </div>
+            <div id="icontact">  </div>
             <div id="isoc">
-                <a href="https://www.behance.net/"><img src="image/B.png"></a>
-                <a href="https://twitter.com/"><img src="image/T.png"></a>
-                <a href="https://www.facebook.com/"><img src="image/F.png"></a>
-                <a href="https://www.linkedin.com/"><img src="image/IN.png"></a>
+                <a id="s1" href="https://www.behance.net/"><img src="image/B.png"></a>
+                <a id="s2" href="https://twitter.com/"><img src="image/T.png"></a>
+                <a id="s3" href="https://www.facebook.com/"><img src="image/F.png"></a>
+                <a id="s4" href="https://www.linkedin.com/"><img src="image/IN.png"></a>
             </div>
         </div>
 
@@ -67,7 +68,6 @@
 
     $( document ).ready(function() {
         circle("ind2",0);
-        $("#isoc").fadeOut(1);
 
         $("#ind2").fadeOut(2000);
         $('#front_black').animate({'opacity':'0' }, 1,function(){
@@ -92,8 +92,8 @@
 
             setTimeout(function(){
                 stopprint=false;
-                $("#ihead").removeClass();
-                $("#ihead").addClass( "strategy" );
+                //$("#ihead").removeClass();
+                //$("#ihead").addClass( "strategy" );
 
                 $("#panel").animate({'top':'100%' }, 1000,function(){  });
 
@@ -182,7 +182,7 @@
 
     function ReduceLogo(finish)
     {
-        $("#isoc").fadeOut(1);
+        HideSoc();
         if(logoMinizred) {finish(); return;}
         logoMinizred=true;
         $("#ihead").html("");
@@ -192,9 +192,14 @@
             $("#ihead").fadeIn(100);
             $("#ibody").fadeIn(100);
 
-            $("#logo").animate({'margin-top':'0%' }, 1,function(){  });
-            $("#logo").animate({'margin-bottom':'4%' }, 1,function(){  });
+            //$("#logo img").animate({'bottom':'0px' }, 1,function(){  });
+            //$("#logo").animate({'margin-bottom':'4%' }, 1,function(){  });
             $("#logo img").animate({'width':'35%' }, 1,function(){ });
+            //$("#logo img").removeClass();
+
+            $("#logo img").css("top","4%");
+            $("#logo img").css("transform","translate(-50%, 0%)");
+
             $("#logo").fadeIn(1000,function(){
                 finish()
             });
@@ -207,10 +212,21 @@
     {
         if(logoMinizred==false){finish(); return;}
         logoMinizred=false;
-        $("#isoc").fadeOut(1);
-        $("#logo").animate({'margin-top':'4%' }, 1000,function(){  });
-        $("#logo").animate({'margin-bottom':'0%' }, 1000,function(){  });
-        $("#logo img").animate({'width':'50%' }, 2000,function(){ finish() });
+        HideSoc();
+
+        $("#logo").fadeOut(1000,function(){
+            $("#logo img").css("top","50%");
+            $("#logo img").css("transform","translate(-50%, -50%)");
+
+            //$("#logo").animate({'margin-top':'4%' }, 1000,function(){  });
+            //$("#logo").animate({'margin-bottom':'0%' }, 1000,function(){  });
+            $("#logo img").animate({'width':'50%' }, 1,function(){ });
+            $("#logo").fadeIn(1000,function(){
+                finish()
+            });
+        });
+
+
 
     }
 
@@ -226,6 +242,27 @@
         });
     }
 
+    function DrawSoc()
+    {
+        $("#s1").fadeIn(1000,function(){
+            $("#s2").fadeIn(1000,function(){
+                $("#s3").fadeIn(1000,function(){
+                    $("#s4").fadeIn(1000,function(){
+                    });
+                });
+            });
+        });
+    }
+
+    function HideSoc()
+    {
+        $("#icontact").html("");
+        $("#s1").fadeOut(1);
+        $("#s2").fadeOut(1);
+        $("#s3").fadeOut(1);
+        $("#s4").fadeOut(1);
+    }
+
 
     $("#strategy").click(function(){
         stopprint=true;
@@ -235,8 +272,8 @@
 
             setTimeout(function(){
                 stopprint=false;
-                $("#ihead").removeClass();
-                $("#ihead").addClass( "strategy" );
+                //$("#ihead").removeClass();
+                //$("#ihead").addClass( "strategy" );
                 printText("#ihead","Strategy",0,function(){
                     printText("#ibody","META is branding laboratory, based in Moscow, witch specializes in products of Premium Segment.~\
             Looking at the world through the prism of Metaphysics we see the process that underlie the \
@@ -260,8 +297,8 @@
 
             setTimeout(function(){
                 stopprint=false;
-                $("#ihead").removeClass();
-                $("#ihead").addClass( "creative" );
+                //$("#ihead").removeClass();
+                //$("#ihead").addClass( "creative" );
                 printText("#ihead","Creative",0,function(){
                     printText("#ibody","META is branding laboratory, based in Moscow, witch specializes in products of Premium Segment.~\
             Looking at the world through the prism of Metaphysics we see the process that underlie the \
@@ -284,8 +321,8 @@
 
             setTimeout(function(){
                 stopprint=false;
-                $("#ihead").removeClass();
-                $("#ihead").addClass( "web" );
+                //$("#ihead").removeClass();
+                //$("#ihead").addClass( "web" );
                 printText("#ihead","Web",0,function(){
                     printText("#ibody","META is branding laboratory, based in Moscow, witch specializes in products of Premium Segment.~\
             Looking at the world through the prism of Metaphysics we see the process that underlie the \
@@ -308,8 +345,8 @@
 
             setTimeout(function(){
                 stopprint=false;
-                $("#ihead").removeClass();
-                $("#ihead").addClass( "advertising" );
+                //$("#ihead").removeClass();
+                //$("#ihead").addClass( "advertising" );
                 printText("#ihead","Advertising",0,function(){
                     printText("#ibody","META is branding laboratory, based in Moscow, witch specializes in products of Premium Segment.~\
             Looking at the world through the prism of Metaphysics we see the process that underlie the \
@@ -326,23 +363,26 @@
     $("#who").click(function(){
         stopprint=true;
         ReduceLogo(function(){
-            $("#isoc").fadeOut(200);
 
             $("#ihead").html("");
             $("#ibody").html("");
 
             setTimeout(function(){
                 stopprint=false;
-                $("#ihead").removeClass();
-                $("#ihead").addClass( "who" );
+                //$("#ihead").removeClass();
+                //$("#ihead").addClass( "who" );
                 printText("#ihead","",0,function(){
                     printText("#ibody","META is branding laboratory, based in Moscow, witch specializes in products of Premium Segment.~\
             Looking at the world through the prism of Metaphysics we see the process that underlie the \
             success of any projects.~\
             We build out outlook on the aesthetics and philosophy, trying to understand the depth of the human \
             mind, using this experience to create masterpieces of creative art of branding.~~\
-            105066, Moscow, 45 Olkhovskaya St.,bdg 1 ~+74957259669, +74957908780~info@metamoscow.com",0,function(){
-                        $("#isoc").fadeIn(1000);
+            ",0,function(){
+                        printText("#icontact","105066, Moscow, 45 Olkhovskaya St.,bdg 1 ~+74957259669, +74957908780~info@metamoscow.com~~",
+                                0,function(){
+                                    DrawSoc();
+                                });
+
                     });
                 });
 
@@ -365,10 +405,40 @@
 
 <style>
 
+    #logo_img{
+        /*position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;*/
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #s1{ display: none; }
+    #s2{ display: none; }
+    #s3{ display: none; }
+    #s4{ display: none; }
+
     #isoc{
         width: 50%;
         display: inline-block;
         text-align: left;
+    }
+
+    #icontact{
+        font-family: helvetica, arial;
+        margin-top: 1%;
+        width: 50%;
+        display: inline-block;
+        text-align: left;
+    }
+
+    #ihead{
+        font-family: Pushkin;
     }
 
     #isoc img{
@@ -385,7 +455,7 @@
             height: 5%;
         }
 
-        #strategy
+        /*#strategy
         {
             margin-top: 0.4%;
         }
@@ -403,7 +473,7 @@
         #advertising
         {
             margin-top: 0.4%;
-        }
+        }*/
 
         #ihead{
             font-size: 23px;
@@ -428,10 +498,10 @@
             height: 5%;
         }
 
-        #strategy
+        /*#strategy
         {
             margin-top: 0.5%;
-        }
+        }*/
 
         #ihead{
             font-size: 20px;
@@ -457,7 +527,7 @@
             height: 5%;
         }
 
-        #strategy
+        /*#strategy
         {
             margin-top: 0.6%;
         }
@@ -475,7 +545,7 @@
         #advertising
         {
             margin-top: 0.6%;
-        }
+        }*/
 
         #ihead{
             font-size: 18px;
@@ -505,7 +575,7 @@
             font: 15px cour;
         }
 
-        #strategy
+        /*#strategy
         {
             margin-top: 0.6%;
         }
@@ -523,7 +593,7 @@
         #advertising
         {
             margin-top: 0.6%;
-        }
+        }*/
 
         #ihead{
             font-size: 15px;
@@ -551,7 +621,7 @@
             font: 13px cour;
         }
 
-        #strategy
+        /*#strategy
         {
             margin-top: 1%;
         }
@@ -569,7 +639,7 @@
         #advertising
         {
             margin-top: 1%;
-        }
+        }*/
 
         #ihead{
             font-size: 13px;
@@ -594,7 +664,7 @@
             font: 10px cour;
         }
 
-        #strategy
+        /*#strategy
         {
             margin-top: 3%;
         }
@@ -612,7 +682,7 @@
         #advertising
         {
             margin-top: 3%;
-        }
+        }*/
         #ihead{
             font-size: 11px;
         }
@@ -692,7 +762,7 @@
     #right{
         width: 2px;
         height: 0%;
-        right: 1px;
+        right: 0px;
     }
 
     #ibody{
@@ -718,6 +788,8 @@
     #info{
         width: 100%;
         text-align: center;
+        position: fixed;
+        top: 35%;
     }
 
     #ind div{
@@ -773,7 +845,12 @@
     #cross img{
         height:80%;
         cursor: pointer;
-        vertical-align: middle;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
     }
 
     #strategy
@@ -783,6 +860,9 @@
         color: white;
         margin-left: -45%;
         cursor: pointer;
+        position: absolute;
+        top: 50%;
+        transform: translate(0%, -50%);
     }
 
     #creative
@@ -792,6 +872,10 @@
         color: white;
         margin-left: -20%;
         cursor: pointer;
+        position: absolute;
+        top: 50%;
+        transform: translate(0%, -50%);
+
     }
 
     #web
@@ -801,6 +885,9 @@
         color: white;
         margin-left: 15%;
         cursor: pointer;
+        position: absolute;
+        top: 50%;
+        transform: translate(0%, -50%);
     }
 
     #advertising
@@ -810,6 +897,9 @@
         color: white;
         margin-left: 35%;
         cursor: pointer;
+        position: absolute;
+        top: 50%;
+        transform: translate(0%, -50%);
     }
 
 @font-face {
