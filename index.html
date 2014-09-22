@@ -197,7 +197,7 @@
             $("#logo img").animate({'width':'35%' }, 1,function(){ });
             //$("#logo img").removeClass();
 
-            $("#logo img").css("top","4%");
+            $("#logo img").css("top","13%");
             $("#logo img").css("transform","translate(-50%, 0%)");
 
             $("#logo").fadeIn(1000,function(){
@@ -274,7 +274,7 @@
                 stopprint=false;
                 //$("#ihead").removeClass();
                 //$("#ihead").addClass( "strategy" );
-                printText("#ihead","Strategy",0,function(){
+                printText("#ihead","strategy",0,function(){
                     printText("#ibody","META is branding laboratory, based in Moscow, witch specializes in products of Premium Segment.~\
             Looking at the world through the prism of Metaphysics we see the process that underlie the \
             success of any projects.~\
@@ -299,7 +299,7 @@
                 stopprint=false;
                 //$("#ihead").removeClass();
                 //$("#ihead").addClass( "creative" );
-                printText("#ihead","Creative",0,function(){
+                printText("#ihead","creative",0,function(){
                     printText("#ibody","META is branding laboratory, based in Moscow, witch specializes in products of Premium Segment.~\
             Looking at the world through the prism of Metaphysics we see the process that underlie the \
             success of any projects.~\
@@ -323,7 +323,7 @@
                 stopprint=false;
                 //$("#ihead").removeClass();
                 //$("#ihead").addClass( "web" );
-                printText("#ihead","Web",0,function(){
+                printText("#ihead","web",0,function(){
                     printText("#ibody","META is branding laboratory, based in Moscow, witch specializes in products of Premium Segment.~\
             Looking at the world through the prism of Metaphysics we see the process that underlie the \
             success of any projects.~\
@@ -347,7 +347,7 @@
                 stopprint=false;
                 //$("#ihead").removeClass();
                 //$("#ihead").addClass( "advertising" );
-                printText("#ihead","Advertising",0,function(){
+                printText("#ihead","advertising",0,function(){
                     printText("#ibody","META is branding laboratory, based in Moscow, witch specializes in products of Premium Segment.~\
             Looking at the world through the prism of Metaphysics we see the process that underlie the \
             success of any projects.~\
@@ -410,6 +410,7 @@
         top:50%;
         left:50%;
         transform: translate(-50%, -50%);
+        margin-top: -65px;
     }
 
     #s1{ display: none; }
@@ -473,11 +474,6 @@
         #who{
             height: 5%;
         }
-
-        /*#strategy
-        {
-            margin-top: 0.5%;
-        }*/
 
         #ihead{
             font-size: 25px;
@@ -630,10 +626,11 @@
         cursor: pointer;
         overflow: hidden;
         transform: translate(-50%, -50%);
+        margin-top: -65px;
     }
 
     #who p{
-        margin: 0;
+        margin: 3px 0px;
         position: absolute;
         top:50%;
         left: 50%;
@@ -641,6 +638,7 @@
         transform: translate(-50%, -50%);
         /*font: 16px cour;*/
         font-weight: bold;
+        font-family: OratorStd;
     }
 
     #bottom{
@@ -735,7 +733,7 @@
         display: inline-block;
         text-align: center;
         vertical-align: middle;
-
+        font-family: OratorStd;
         /*font: 17px cour;*/
     }
 
