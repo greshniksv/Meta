@@ -9,7 +9,7 @@
         <div id="front_black"></div>
 
         <div id="logo" style="width: 100%; height: 100%; text-align: center; ">
-            <img id="logo_img" src="image/logo.png" width="50%">
+            <img id="logo_img" src="image/logo.png" width="50%" onclick="GotoMain()">
         </div>
 
         <div id="info">
@@ -81,8 +81,14 @@
     });
 
     $("#cross img").click(function() {
+        GotoMain();
+    });
+
+    function GotoMain()
+    {
         $("#ihead").fadeOut(100);
         $("#ibody").fadeOut(100);
+        $("#who").fadeIn(1000);
 
         BackLogo(function(){
             stopprint=true;
@@ -95,15 +101,15 @@
                 //$("#ihead").removeClass();
                 //$("#ihead").addClass( "strategy" );
 
-                $("#panel").animate({'top':'100%' }, 1000,function(){  });
+                $("#panel").animate({'top':'120%' }, 700,function(){  });
 
-            }, 10);
+            }, 30);
         });
+    }
 
-    });
 
     $("#ind").click(function() {
-        $("#panel").animate({'top':'95%' }, 1000,function(){  });
+        $("#panel").animate({'top':'95%' }, 700,function(){  });
     });
 
     function circle(id,angle)
@@ -234,12 +240,14 @@
     {
         $("#who_text").html("WHO WE ARE");
 
-        $("#top").animate({'left':'0' }, 1000,function(){ });
-
+        $("#top").animate({'width':'100%' }, 1000,function(){ });
         $("#bottom").animate({'left':'0' }, 1000,function(){
             $("#right").animate({'height':'100%' }, 1000,function(){});
-            $("#left").animate({'height':'100%' }, 1000,function(){});
+            $("#left").animate({'top':'0%' }, 1000,function(){});
         });
+
+
+
     }
 
     function DrawSoc()
@@ -265,6 +273,7 @@
 
 
     $("#strategy").click(function(){
+        $("#who").fadeIn(1000);
         stopprint=true;
         ReduceLogo(function(){
             $("#ihead").html("");
@@ -290,6 +299,7 @@
 
 
     $("#creative").click(function(){
+        $("#who").fadeIn(1000);
         stopprint=true;
         ReduceLogo(function(){
             $("#ihead").html("");
@@ -314,6 +324,7 @@
 
 
     $("#web").click(function(){
+        $("#who").fadeIn(1000);
         stopprint=true;
         ReduceLogo(function(){
             $("#ihead").html("");
@@ -338,6 +349,7 @@
 
 
     $("#advertising").click(function(){
+        $("#who").fadeIn(1000);
         stopprint=true;
         ReduceLogo(function(){
             $("#ihead").html("");
@@ -361,6 +373,7 @@
     });
 
     $("#who").click(function(){
+        $("#who").fadeOut(1000);
         stopprint=true;
         ReduceLogo(function(){
 
@@ -430,6 +443,7 @@
         width: 50%;
         display: inline-block;
         text-align: left;
+        font-size: 12px;
     }
 
     #ihead{
@@ -449,8 +463,6 @@
         #who{
             height: 5%;
         }
-
-
 
         #ihead{
             font-size: 27px;
@@ -626,7 +638,7 @@
         cursor: pointer;
         overflow: hidden;
         transform: translate(-50%, -50%);
-        margin-top: -65px;
+        margin-top: -61px;
     }
 
     #who p{
@@ -650,13 +662,14 @@
 
     #left{
         width: 2px;
-        height: 0%;
+        height: 100%;
+        top: 100%;
     }
 
     #top{
         top: 0%;
-        width: 100%;
-        left: 100%;
+        width: 0%;
+        left: 0%;
         height: 2px;
     }
 
@@ -727,7 +740,7 @@
         position: absolute;
         width: 100%;
         height: 5%;
-        top: 100%;
+        top: 120%;
         background-color: black;
         z-index: 1000;
         display: inline-block;
@@ -744,7 +757,6 @@
     }
 
     #cross img{
-        height:80%;
         cursor: pointer;
         position: absolute;
         margin: auto;
