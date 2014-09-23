@@ -29,22 +29,16 @@
             <div id="left"></div>
             <div id="top"></div>
             <div id="right"></div>
-            <p id="who_text"></p>
+            <div id="whot"><p id="who_text"></p></div>
         </div>
 
 
+        <div id="cind">
         <div id="ind">
             <div></div>
             <div></div>
             <div></div>
-        </div>
-
-        <div id="ind2">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-
+        </div></div>
 
         <div id="panel">
             <div id="strategy">STRATEGY</div>
@@ -67,9 +61,9 @@
     var logoMinizred = false;
 
     $( document ).ready(function() {
-        circle("ind2",0);
+        //circle("ind2",0);
 
-        $("#ind2").fadeOut(2000);
+        //$("#ind2").fadeOut(2000);
         $('#front_black').animate({'opacity':'0' }, 1,function(){
             circlestop=true;
             $("#ind").fadeIn(1);
@@ -123,20 +117,20 @@
 
     function printText(id,text,position,finish,speed)
     {
-        if(stopprint) return;
+        if(!stopprint){
+            if (typeof speed == 'undefined') speed=15;
+            var char = text.charAt(position);
+            if(char=="~") char="<br/>"
+            $(id).html($(id).html()+char);
 
-        if (typeof speed == 'undefined') speed=15;
-        var char = text.charAt(position);
-        if(char=="~") char="<br/>"
-        $(id).html($(id).html()+char);
-
-        if(text.length>position+1)
-        {
-            setTimeout(function(){printText(id,text,position+1,finish,speed)}, speed);
-        }
-        else
-        {
-            finish();
+            if(text.length>position+1)
+            {
+                setTimeout(function(){printText(id,text,position+1,finish,speed)}, speed);
+            }
+            else
+            {
+                finish();
+            }
         }
     }
 
@@ -203,8 +197,8 @@
             $("#logo img").animate({'width':'35%' }, 1,function(){ });
             //$("#logo img").removeClass();
 
-            $("#logo img").css("top","13%");
-            $("#logo img").css("transform","translate(-50%, 0%)");
+            $("#logo img").css("margin-top","30px");
+            //$("#logo img").css("transform","translate(-50%, 0%)");
 
             $("#logo").fadeIn(1000,function(){
                 finish()
@@ -221,11 +215,12 @@
         HideSoc();
 
         $("#logo").fadeOut(1000,function(){
-            $("#logo img").css("top","50%");
-            $("#logo img").css("transform","translate(-50%, -50%)");
+            //$("#logo img").css("top","50%");
+            //$("#logo img").css("transform","translate(-50%, -50%)");
 
             //$("#logo").animate({'margin-top':'4%' }, 1000,function(){  });
             //$("#logo").animate({'margin-bottom':'0%' }, 1000,function(){  });
+            $("#logo img").css("margin-top","65px");
             $("#logo img").animate({'width':'50%' }, 1,function(){ });
             $("#logo").fadeIn(1000,function(){
                 finish()
@@ -419,12 +414,20 @@
 <style>
 
     #logo_img{
-        position:absolute;
+        /*position:absolute;
         top:50%;
         left:50%;
         transform: translate(-50%, -50%);
-        margin-top: -65px;
-        cursor: pointer;
+        cursor: pointer;*/
+
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin-top: 65px;
+
     }
 
     #s1{ display: none; }
@@ -626,7 +629,6 @@
     }
 
     #who div{
-        background-color: black;
         position: absolute;
     }
 
@@ -634,22 +636,29 @@
         width: 13%;
         /*height: 3%;*/
         position: absolute;
-        top:85%;
-        left: 50%;
+        top:65%;
         cursor: pointer;
         overflow: hidden;
-        transform: translate(-50%, -50%);
-        margin-top: -61px;
+        margin: auto;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        text-align: center;
+    }
+
+    #whot{
+        background-color: white;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin-top: -3px;
     }
 
     #who p{
-        margin: 1px 0px;
-        position: absolute;
-        top:50%;
-        left: 50%;
         white-space: nowrap;
-        transform: translate(-50%, -50%);
-        /*font: 16px cour;*/
         font-weight: bold;
         font-family: OratorStd;
     }
@@ -659,12 +668,16 @@
         width: 100%;
         left: 100%;
         height: 2px;
+        background-color: black;
+        z-index: 1000;
     }
 
     #left{
         width: 2px;
         height: 100%;
         top: 100%;
+        background-color: black;
+        z-index: 1000;
     }
 
     #top{
@@ -672,12 +685,16 @@
         width: 0%;
         left: 0%;
         height: 2px;
+        background-color: black;
+        z-index: 1000;
     }
 
     #right{
         width: 2px;
         height: 0%;
         right: 0px;
+        background-color: black;
+        z-index: 1000;
     }
 
     #ibody{
@@ -714,12 +731,27 @@
         margin: 3px;
     }
 
-    #ind {
-        position: absolute;
+    #cind{
+        text-align: center;
         top:95%;
-        left: calc(50% - 1em);
+        position: absolute;
+        margin: auto;
+        left: 50%;
+        margin-left: -17px;
+        width: 25px;
+        height: 30px;
+        cursor: pointer;
+    }
+
+    #ind {
         display: none;
         cursor: pointer;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
     }
 
 
@@ -732,8 +764,11 @@
 
     #ind2 {
         position: absolute;
-        top:95%;
-        left: calc(50% - 1em);
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
     }
 
     #panel {
@@ -769,51 +804,51 @@
 
     #strategy
     {
-        display: inline-block;
         position: absolute;
         color: white;
-        margin-left: -45%;
         cursor: pointer;
-        position: absolute;
-        top: 50%;
-        transform: translate(0%, -50%);
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        left: 7%;
+        display: inline-table;
+
     }
 
     #creative
     {
-        display: inline-block;
         position: absolute;
         color: white;
-        margin-left: -20%;
         cursor: pointer;
-        position: absolute;
-        top: 50%;
-        transform: translate(0%, -50%);
-
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        left: 30%;
+        display: inline-table;
     }
 
     #web
     {
-        display: inline-block;
         position: absolute;
         color: white;
-        margin-left: 15%;
         cursor: pointer;
-        position: absolute;
-        top: 50%;
-        transform: translate(0%, -50%);
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        left: 65%;
+        display: inline-table;
     }
 
     #advertising
     {
-        display: inline-block;
         position: absolute;
         color: white;
-        margin-left: 35%;
         cursor: pointer;
-        position: absolute;
-        top: 50%;
-        transform: translate(0%, -50%);
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        left: 85%;
+        display: inline-table;
     }
 
 @font-face {
