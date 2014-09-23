@@ -217,7 +217,7 @@
 
         $("#logo").fadeOut(1000,function(){
             $("#logo img").css("cursor","default");
-            $("#logo img").css("margin-top","65px");
+            $("#logo img").css("margin-top","100px");
             $("#logo img").animate({'width':'50%' }, 1,function(){ });
             $("#logo").fadeIn(1000,function(){
                 drawWho();
@@ -644,9 +644,8 @@ function StopAllTimers()
 
     #who{
         width: 13%;
-        /*height: 3%;*/
         position: absolute;
-        top:65%;
+        top:52%;
         cursor: pointer;
         overflow: hidden;
         margin: auto;
@@ -732,6 +731,7 @@ function StopAllTimers()
         text-align: center;
         position: fixed;
         top: 35%;
+        margin-top: 3%;
     }
 
     #ind div{
