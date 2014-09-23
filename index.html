@@ -80,25 +80,28 @@
 
     function GotoMain()
     {
-        $("#ihead").fadeOut(100);
-        $("#ibody").fadeOut(100);
-        $("#who").fadeIn(1000);
+        if(logoMinizred)
+        {
+            $("#ihead").fadeOut(100);
+            $("#ibody").fadeOut(100);
+            $("#who").fadeIn(1000);
 
-        BackLogo(function(){
-            stopprint=true;
+            BackLogo(function(){
+                stopprint=true;
 
-            $("#ihead").html("");
-            $("#ibody").html("");
+                $("#ihead").html("");
+                $("#ibody").html("");
 
-            setTimeout(function(){
-                stopprint=false;
-                //$("#ihead").removeClass();
-                //$("#ihead").addClass( "strategy" );
+                setTimeout(function(){
+                    stopprint=false;
+                    //$("#ihead").removeClass();
+                    //$("#ihead").addClass( "strategy" );
 
-                $("#panel").animate({'top':'120%' }, 700,function(){  });
+                    $("#panel").animate({'top':'120%' }, 700,function(){  });
 
-            }, 30);
-        });
+                }, 30);
+            });
+        }
     }
 
 
@@ -192,13 +195,9 @@
             $("#ihead").fadeIn(100);
             $("#ibody").fadeIn(100);
 
-            //$("#logo img").animate({'bottom':'0px' }, 1,function(){  });
-            //$("#logo").animate({'margin-bottom':'4%' }, 1,function(){  });
             $("#logo img").animate({'width':'35%' }, 1,function(){ });
-            //$("#logo img").removeClass();
-
             $("#logo img").css("margin-top","30px");
-            //$("#logo img").css("transform","translate(-50%, 0%)");
+            $("#logo img").css("cursor","pointer");
 
             $("#logo").fadeIn(1000,function(){
                 finish()
@@ -215,11 +214,7 @@
         HideSoc();
 
         $("#logo").fadeOut(1000,function(){
-            //$("#logo img").css("top","50%");
-            //$("#logo img").css("transform","translate(-50%, -50%)");
-
-            //$("#logo").animate({'margin-top':'4%' }, 1000,function(){  });
-            //$("#logo").animate({'margin-bottom':'0%' }, 1000,function(){  });
+            $("#logo img").css("cursor","default");
             $("#logo img").css("margin-top","65px");
             $("#logo img").animate({'width':'50%' }, 1,function(){ });
             $("#logo").fadeIn(1000,function(){
@@ -414,12 +409,6 @@
 <style>
 
     #logo_img{
-        /*position:absolute;
-        top:50%;
-        left:50%;
-        transform: translate(-50%, -50%);
-        cursor: pointer;*/
-
         position: absolute;
         margin: auto;
         top: 0;
@@ -427,7 +416,7 @@
         right: 0;
         bottom: 0;
         margin-top: 65px;
-
+        /*cursor: pointer;*/
     }
 
     #s1{ display: none; }
