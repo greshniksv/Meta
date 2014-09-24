@@ -1,0 +1,466 @@
+
+#logo_img{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-top: 100px;
+    /*cursor: pointer;*/
+}
+
+#s1{ display: none; }
+#s2{ display: none; }
+#s3{ display: none; }
+#s4{ display: none; }
+
+#isoc{
+    width: 50%;
+    display: inline-block;
+    text-align: left;
+}
+
+#icontact{
+    font-family: helvetica, arial;
+    margin-top: 1%;
+    width: 50%;
+    display: inline-block;
+    text-align: left;
+    font-size: 12px;
+}
+
+#ihead{
+    font-family: Pushkin;
+}
+
+#isoc img{
+    cursor: pointer;
+}
+
+@media (max-width: 9000px) {
+    #who p{
+        font: 16px cour;
+        /*margin: 5% 24%;*/
+    }
+
+    #who{
+        height: 5%;
+    }
+
+    #ihead{
+        font-size: 55px;
+    }
+
+    #ibody{
+        font-size: 17px;
+    }
+
+    #isoc img{
+        width: auto;
+    }
+}
+
+@media (max-width: 1540px) {
+    #who p{
+        font: 14px cour;
+        /*margin: 5% 22%;*/
+    }
+
+    #who{
+        height: 5%;
+    }
+
+    #ihead{
+        font-size: 50px;
+    }
+
+    #ibody{
+        font-size: 15px;
+    }
+
+    #isoc img{
+        width: 15px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 1360px) {
+    #who p{
+        font: 11px cour;
+        /*margin: 5% 15%;*/
+    }
+
+    #who{
+        height: 5%;
+    }
+
+
+    #ihead{
+        font-size: 45px;
+    }
+
+    #ibody{
+        font-size: 13px;
+    }
+
+    #isoc img{
+        width: 13px;
+        height: 17px;
+    }
+}
+
+@media (max-width: 1099px) {
+    #who p{
+        font: 9px cour;
+        /*margin: 5% 13%;*/
+    }
+
+    #who{
+        height: 4%;
+    }
+
+    #panel {
+        font: 15px cour;
+    }
+
+
+    #ihead{
+        font-size: 42px;
+    }
+
+    #ibody{
+        font-size: 11px;
+    }
+
+    #isoc img{
+        width: 10px;
+        height: 15px;
+    }
+}
+
+@media (max-width: 925px) {
+    #who p{
+        font: 8px cour;
+        /*margin: 5% 13%;*/
+    }
+    #who{
+        height: 3%;
+    }
+    #panel {
+        font: 13px cour;
+    }
+
+
+    #ihead{
+        font-size: 38px;
+    }
+
+    #ibody{
+        font-size: 8px;
+    }
+
+    #isoc img{
+        width: 8px;
+        height: 12px;
+    }
+}
+
+@media (max-width: 500px) {
+    #who p{
+        font: 8px cour;
+        /*margin: 5% 13%;*/
+    }
+    #panel {
+        font: 10px cour;
+    }
+
+
+    #ihead{
+        font-size: 35px;
+    }
+
+    #ibody{
+        font-size: 7px;
+    }
+}
+
+
+body{
+    overflow: hidden;
+}
+
+.strategy{
+    font-family: Pancetta_Serif_Pro_Regular;
+}
+
+.creative{
+    font-family: Pushkin;
+}
+
+.web{
+    font-family:Pixel_Berry_08_84_Ltd;
+}
+
+.advertising{
+    font-family: alienleague;
+}
+
+#who div{
+    position: absolute;
+}
+
+#who{
+    width: 13%;
+    position: absolute;
+    top:52%;
+    cursor: pointer;
+    overflow: hidden;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+}
+
+#whot{
+    background-color: white;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-top: -3px;
+}
+
+#who p{
+    white-space: nowrap;
+    font-weight: bold;
+    font-family: OratorStd;
+}
+
+#bottom{
+    top: 94%;
+    width: 100%;
+    left: 100%;
+    height: 2px;
+    background-color: black;
+    z-index: 1000;
+}
+
+#left{
+    width: 2px;
+    height: 100%;
+    top: 100%;
+    background-color: black;
+    z-index: 1000;
+}
+
+#top{
+    top: 0%;
+    width: 0%;
+    left: 0%;
+    height: 2px;
+    background-color: black;
+    z-index: 1000;
+}
+
+#right{
+    width: 2px;
+    height: 0%;
+    right: 0px;
+    background-color: black;
+    z-index: 1000;
+}
+
+#ibody{
+    margin-top: 1%;
+    font-family: OratorStd;
+    width: 50%;
+    display: inline-block;
+    text-align: left;
+}
+
+
+#front_black{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background-color: black;
+    opacity: 0;
+}
+
+#info{
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    top: 35%;
+    margin-top: 3%;
+}
+
+#ind div{
+    width: 25px;
+    height: 3px;
+    background-color: black;
+    margin: 3px;
+}
+
+#cind{
+    text-align: center;
+    top:95%;
+    position: absolute;
+    margin: auto;
+    left: 50%;
+    margin-left: -17px;
+    width: 25px;
+    height: 30px;
+    cursor: pointer;
+}
+
+#ind {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+
+#ind2 div{
+    width: 25px;
+    height: 3px;
+    background-color: black;
+    margin: 3px;
+}
+
+#ind2 {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#panel {
+    left: 0px;
+    position: absolute;
+    width: 100%;
+    height: 5%;
+    top: 120%;
+    background-color: black;
+    z-index: 1000;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    font-family: OratorStd;
+    /*font: 17px cour;*/
+}
+
+#cross{
+    height:100%;
+    cursor: pointer;
+
+}
+
+#cross img{
+    cursor: pointer;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#strategy
+{
+    position: absolute;
+    color: white;
+    cursor: pointer;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: 7%;
+    display: inline-table;
+
+}
+
+#creative
+{
+    position: absolute;
+    color: white;
+    cursor: pointer;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: 30%;
+    display: inline-table;
+}
+
+#web
+{
+    position: absolute;
+    color: white;
+    cursor: pointer;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: 65%;
+    display: inline-table;
+}
+
+#advertising
+{
+    position: absolute;
+    color: white;
+    cursor: pointer;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: 85%;
+    display: inline-table;
+}
+
+@font-face {
+    font-family: alienleague;
+    src: url(font/alienleague.ttf);
+}
+
+@font-face {
+    font-family: cour;
+    src: url(font/cour.ttf);
+}
+
+@font-face {
+    font-family: Pancetta_Serif_Pro_Regular;
+    src: url(font/Pancetta_Serif_Pro_Regular.otf);
+}
+
+
+@font-face {
+    font-family: Pushkin;
+    src: url(font/Pushkin.ttf);
+}
+
+@font-face {
+    font-family: Raleway-Regular;
+    src: url(font/Raleway-Regular.ttf);
+}
+
+@font-face {
+    font-family: Pixel_Berry_08_84_Ltd;
+    src: url(font/Pixel_Berry_08_84_Ltd.Edition.TTF);
+}
+
+@font-face {
+    font-family: OratorStd;
+    src: url(font/OratorStd.otf);
+}
