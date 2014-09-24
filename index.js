@@ -15,6 +15,7 @@ $(document).ready(function () {
     $("#web").html(Lang("hWeb","en").toUpperCase());
     $("#advertising").html(Lang("hAdvertising","en").toUpperCase());
 
+
     $('#front_black').animate({'opacity': '0' }, 1, function () {
         circlestop = true;
         $("#ind").fadeIn(1);
