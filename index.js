@@ -9,19 +9,17 @@ String.prototype.capitalize = function() {
 
 $(document).ready(function () {
     //circle("ind2",0);
-
+    $("#logo_img").fadeOut(1);
     $("#strategy").html(Lang("hStrategy","en").toUpperCase());
     $("#creative").html(Lang("hCreative","en").toUpperCase());
     $("#web").html(Lang("hWeb","en").toUpperCase());
     $("#advertising").html(Lang("hAdvertising","en").toUpperCase());
 
 
-    $('#front_black').animate({'opacity': '0' }, 1, function () {
-        circlestop = true;
-        $("#ind").fadeIn(1);
-        $("#front_black").fadeOut(1);
-
-        drawWho();
+    $("#logo_img").fadeIn(1000,function(){
+        drawMenu(function(){
+            drawWho();
+        });
     });
 
 });
@@ -172,19 +170,40 @@ function BackLogo(finish) {
     logoMinizred = false;
     HideSoc();
 
+    $("#panel").animate({'top': '120%' }, 700, function () { });
+
+    $("#ind").fadeOut(1000, function () {
+        $("#i1").css("top", "100%");
+        $("#i2").css("top", "100%");
+        $("#i3").css("top", "100%");
+        $("#ind").fadeIn(1);
+    });
+
     $("#logo").fadeOut(1000, function () {
         $("#logo img").css("cursor", "default");
         $("#logo img").css("margin-top", "100px");
         $("#logo img").animate({'width': '50%' }, 1, function () {
         });
         $("#logo").fadeIn(1000, function () {
-            drawWho();
-            finish()
+            drawMenu(function(){
+                drawWho();
+                finish();
+            });
         });
     });
 
 
 }
+
+function drawMenu(finish)
+{
+    $("#i1").animate({'top': '0px' }, 700, function () {
+        $("#i2").animate({'top': '6px' }, 700, function () {
+            $("#i3").animate({'top': '12px' }, 700, function () { finish() });
+        });
+    });
+}
+
 
 function drawWho() {
     $("#who_text").html(Lang("hWho","en"));
@@ -236,13 +255,8 @@ $("#strategy").click(function () {
 
         setTimeout(function () {
             stopprint = false;
-            //$("#ihead").removeClass();
-            //$("#ihead").addClass( "strategy" );
-            printText("#ihead", Lang("hStrategy","en"), 0, function () {
-                printText("#ibody", Lang("bStrategy","en"), 0, function () {
-                });
-            }, textSpeed * 5);
-
+            $("#ihead").html(Lang("hStrategy","en"));
+            printText("#ibody", Lang("bStrategy","en"), 0, function () {});
         }, textSpeed * 10);
     });
 });
@@ -259,13 +273,8 @@ $("#creative").click(function () {
 
         setTimeout(function () {
             stopprint = false;
-            //$("#ihead").removeClass();
-            //$("#ihead").addClass( "creative" );
-            printText("#ihead", Lang("hCreative","en"), 0, function () {
-                printText("#ibody", Lang("bCreative","en"), 0, function () {
-                });
-            }, textSpeed * 5);
-
+            $("#ihead").html(Lang("hCreative","en"));
+            printText("#ibody", Lang("bCreative","en"), 0, function () {});
         }, textSpeed * 10);
     });
 });
@@ -282,13 +291,8 @@ $("#web").click(function () {
 
         setTimeout(function () {
             stopprint = false;
-            //$("#ihead").removeClass();
-            //$("#ihead").addClass( "web" );
-            printText("#ihead", Lang("hWeb","en"), 0, function () {
-                printText("#ibody", Lang("bWeb","en"), 0, function () {
-                });
-            }, textSpeed * 5);
-
+            $("#ihead").html(Lang("hWeb","en"));
+            printText("#ibody", Lang("bWeb","en"), 0, function () {});
         }, textSpeed * 10);
     });
 });
@@ -305,13 +309,8 @@ $("#advertising").click(function () {
 
         setTimeout(function () {
             stopprint = false;
-            //$("#ihead").removeClass();
-            //$("#ihead").addClass( "advertising" );
-            printText("#ihead", Lang("hAdvertising","en"), 0, function () {
-                printText("#ibody", Lang("bAdvertising","en"), 0, function () {
-                });
-            }, textSpeed * 5);
-
+            $("#ihead").html(Lang("hAdvertising","en"));
+            printText("#ibody", Lang("bAdvertising","en"), 0, function () {});
         }, textSpeed * 10);
     });
 });
@@ -374,7 +373,7 @@ function Lang(name,lang)
             success of any projects.~\
             We build out outlook on the aesthetics and philosophy, trying to understand the depth of the human \
             mind, using this experience to create masterpieces of creative art of branding.~"; break;
-            case "hWeb": return "web"; break;
+            case "hWeb": return "digital"; break;
             case "bWeb":
                 return "META is branding laboratory, based in Moscow, witch specializes in products of Premium Segment.~\
             Looking at the world through the prism of Metaphysics we see the process that underlie the \
@@ -403,11 +402,5 @@ function Lang(name,lang)
 
     }
 
-
-
-
 }
-
-
-
 
