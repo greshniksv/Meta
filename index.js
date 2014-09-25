@@ -329,8 +329,8 @@ $("#who").click(function () {
             //$("#ihead").removeClass();
             //$("#ihead").addClass( "who" );
             printText("#ihead", "", 0, function () {
-                printText("#ibody", Lang("bWho","en"), 0, function () {
-                    printText("#icontact", Lang("Contact","en"),
+                printText("#ibody", Lang("bWho","en").toUpperCase(), 0, function () {
+                    printText("#icontact", Lang("Contact","en").toUpperCase(),
                         0, function () {
                             DrawSoc();
                         });
