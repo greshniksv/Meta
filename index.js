@@ -2,7 +2,7 @@
 var stopprint = false;
 var logoMinizred = false;
 var textSpeed = 15;
-var lang="EN";
+var lang="ENG";
 
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
@@ -35,8 +35,8 @@ $("#lang").click(function(){
     $("#ibody").html("");
     $("#icontact").html("");
 
-    if(lang=="EN") { lang="RUS"; $("#lang").html("EN"); }
-    else{ lang="EN"; $("#lang").html("RUS"); }
+    if(lang=="ENG") { lang="RUS"; $("#lang").html("ENG"); }
+    else{ lang="ENG"; $("#lang").html("RUS"); }
 
     $("#lang").css('top', '-5%');
     logoMinizred=true;
@@ -76,7 +76,6 @@ function GotoMain() {
         });
     }
 }
-
 
 $("#ind").click(function () {
     $("#panel").animate({'top': '95%' }, 700, function () {
@@ -255,6 +254,8 @@ function DrawSoc() {
         $("#s2").fadeIn(500, function () {
             $("#s3").fadeIn(500, function () {
                 $("#s4").fadeIn(500, function () {
+                    $("#s5").fadeIn(500, function () {
+                    });
                 });
             });
         });
@@ -267,6 +268,7 @@ function HideSoc() {
     $("#s2").fadeOut(1);
     $("#s3").fadeOut(1);
     $("#s4").fadeOut(1);
+    $("#s5").fadeOut(1);
 }
 
 
@@ -391,7 +393,7 @@ function StopAllTimers() {
 
 function Lang(name) {
 
-    if (lang == "EN") {
+    if (lang == "ENG") {
         switch (name) {
             case "hCreative":
                 return "creative";
@@ -431,11 +433,9 @@ function Lang(name) {
                 return "WHO WE ARE";
                 break;
             case "bWho":
-                return "META is branding laboratory, based in Moscow, witch specializes in products of Premium Segment.~\
-            Looking at the world through the prism of Metaphysics we see the process that underlie the \
-            success of any projects.~\
-            We build out outlook on the aesthetics and philosophy, trying to understand the depth of the human \
-            mind, using this experience to create masterpieces of creative art of branding.~~";
+                return "META IS A BRANDING LABORATORY, BASED IN MOSCOW, WICH SPECIALIZES IN PRODUCTS OF PREMIUM SEGMENT.~\
+                LOOKING AT THE WORLD THROUGH THE PRISM OF METAPHYSICS WE SEE THE PROCESSES THAT UNDERLIE THE SUCCESS OF ANY PROJECTS.~\
+                WE BUILD OUR OUTLOOK ON THE AESTHETICS AND PHILOSOPHY, TRYING TO UNDERSTAND THE DEPTH OF THE HUMAN MIND, USING THIS EXPERIENCE TO CREATE MASTERPIECES OF ART OF BRANDING.~~";
                 break;
             case "Contact":
                 return "105066, Moscow, 45 Olkhovskaya St.,bdg 1 ~+74957259669, +74957908780~info@metamoscow.com~~";
@@ -483,11 +483,9 @@ function Lang(name) {
                 return "КТО МЫ";
                 break;
             case "bWho":
-                return "META is branding laboratory, based in Moscow, witch specializes in products of Premium Segment.~\
-            Looking at the world through the prism of Metaphysics we see the process that underlie the \
-            success of any projects.~\
-            We build out outlook on the aesthetics and philosophy, trying to understand the depth of the human \
-            mind, using this experience to create masterpieces of creative art of branding.~~";
+                return "META MOSCOW  - это брендинговая лаборатория, специализирующаяся на создании и девелопменте продуктов сегмента PREMIUM.~\
+                Воспринимая мир сквозь призму метафизики мы видим, осязаем, визуализируем и используем процессы, обуславливающие успех бренда.~\
+                Мы создаем свои продукты, синтезируя философию и эстетику, постигая глубину разума человека, используя это опыт в своих проектах.~~";
                 break;
             case "Contact":
                 return "105066, Moscow, 45 Olkhovskaya St.,bdg 1 ~+74957259669, +74957908780~info@metamoscow.com~~";
