@@ -256,7 +256,7 @@ $("#strategy").click(function () {
         setTimeout(function () {
             stopprint = false;
             $("#ihead").html(Lang("hStrategy","en"));
-            printText("#ibody", Lang("bStrategy","en"), 0, function () {});
+            printText("#ibody", Lang("bStrategy","en").toUpperCase(), 0, function () {});
         }, textSpeed * 10);
     });
 });
@@ -274,7 +274,7 @@ $("#creative").click(function () {
         setTimeout(function () {
             stopprint = false;
             $("#ihead").html(Lang("hCreative","en"));
-            printText("#ibody", Lang("bCreative","en"), 0, function () {});
+            printText("#ibody", Lang("bCreative","en").toUpperCase(), 0, function () {});
         }, textSpeed * 10);
     });
 });
@@ -292,7 +292,7 @@ $("#web").click(function () {
         setTimeout(function () {
             stopprint = false;
             $("#ihead").html(Lang("hWeb","en"));
-            printText("#ibody", Lang("bWeb","en"), 0, function () {});
+            printText("#ibody", Lang("bWeb","en").toUpperCase(), 0, function () {});
         }, textSpeed * 10);
     });
 });
@@ -310,7 +310,7 @@ $("#advertising").click(function () {
         setTimeout(function () {
             stopprint = false;
             $("#ihead").html(Lang("hAdvertising","en"));
-            printText("#ibody", Lang("bAdvertising","en"), 0, function () {});
+            printText("#ibody", Lang("bAdvertising","en").toUpperCase(), 0, function () {});
         }, textSpeed * 10);
     });
 });
