@@ -3,12 +3,23 @@ var stopprint = false;
 var logoMinizred = false;
 var textSpeed = 15;
 var lang="ENG";
+var textPrintTimers=[];
+var action ="";
+
 
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }
 
+window.onresize = function(event) {
+    var newr = $("#out").height()-3;
+    $("#bottom").css("top",newr+"px");
+};
+
 $(document).ready(function () {
+    var newr = $("#out").height()-3;
+    $("#bottom").css("top",newr+"px");
+
     //circle("ind2",0);
     $("#logo_img").fadeOut(1);
     $("#strategy").html(Lang("hStrategy").toUpperCase());
@@ -19,7 +30,8 @@ $(document).ready(function () {
 
     $("#logo_img").fadeIn(1000,function(){
         drawMenu(function(){
-            setTimeout(function(){ drawWho(function(){ drawLang() }); },1000);
+            textPrintTimers[textPrintTimers.length] =
+                setTimeout(function(){ drawWho(function(){ drawLang() }); },1000);
         });
     });
 });
@@ -31,6 +43,7 @@ $("#cross img").click(function () {
 $("#lang").click(function(){
 
     StopAllTimers();
+    //StopPrintTimers();
     $("#ihead").html("");
     $("#ibody").html("");
     $("#icontact").html("");
@@ -100,7 +113,7 @@ function printText(id, text, position, finish, speed) {
         $(id).html($(id).html() + char);
 
         if (text.length > position + 1) {
-            setTimeout(function () {
+            textPrintTimers[textPrintTimers.length] = setTimeout(function () {
                 printText(id, text, position + 1, finish, speed)
             }, speed);
         }
@@ -184,12 +197,18 @@ function ReduceLogo(finish) {
 }
 
 function BackLogo(finish) {
+    action="";
+
     if (logoMinizred == false) {
         finish();
         return;
     }
     logoMinizred = false;
+
+    stopprint = true;
+    StopPrintTimers();
     HideSoc();
+    hideLang();
 
     $("#ind").fadeOut(400, function () {
         $("#i1").css("top", "100%");
@@ -217,8 +236,17 @@ function BackLogo(finish) {
 
 }
 
+
+function hideLang(){
+    $("#lang").fadeOut(1000,function(){
+        $("#lang").css("top","-5%");
+    });
+}
+
 function drawLang()
 {
+    $("#lang").css("top","-5%");
+    $("#lang").fadeIn(1);
     $("#lang").animate({'top': '5%' }, 400, function () { });
 }
 
@@ -250,6 +278,14 @@ function drawWho(finish) {
 }
 
 function DrawSoc() {
+
+    $("#s1").fadeOut(1);
+    $("#s2").fadeOut(1);
+    $("#s3").fadeOut(1);
+    $("#s4").fadeOut(1);
+    $("#s5").fadeOut(1);
+    $("#isoc").fadeIn(1);
+
     $("#s1").fadeIn(500, function () {
         $("#s2").fadeIn(500, function () {
             $("#s3").fadeIn(500, function () {
@@ -269,13 +305,19 @@ function HideSoc() {
     $("#s3").fadeOut(1);
     $("#s4").fadeOut(1);
     $("#s5").fadeOut(1);
+    $("#isoc").fadeOut(1);
 }
 
 
 $("#strategy").click(function () {
+    if(action=="strategy") return;
+    action="strategy";
+
+    hideLang();
+    HideSoc();
     $("#info").css("margin-top", "1%");
-    StopAllTimers();
     stopprint = true;
+    StopPrintTimers();
     $("#who").fadeOut(1000);
     ReduceLogo(function () {
         $("#ihead").html("");
@@ -285,7 +327,7 @@ $("#strategy").click(function () {
             stopprint = false;
             $("#ihead").html(Lang("hStrategy"));
             setTimeout(function(){
-                printText("#ibody", Lang("bStrategy").toUpperCase(), 0, function () {});
+                printText("#ibody", Lang("bStrategy").toUpperCase(), 0, function () { action=""; });
             },500);
         }, textSpeed * 10);
     });
@@ -293,9 +335,14 @@ $("#strategy").click(function () {
 
 
 $("#creative").click(function () {
+    if(action=="creative") return;
+    action="creative";
+
+    HideSoc();
+    hideLang();
     $("#info").css("margin-top", "1%");
-    StopAllTimers();
     stopprint = true;
+    StopPrintTimers();
     $("#who").fadeOut(1000);
     ReduceLogo(function () {
         $("#ihead").html("");
@@ -306,7 +353,7 @@ $("#creative").click(function () {
             $("#ihead").html(Lang("hCreative"));
 
             setTimeout(function(){
-                printText("#ibody", Lang("bCreative").toUpperCase(), 0, function () {});
+                printText("#ibody", Lang("bCreative").toUpperCase(), 0, function () { action=""; });
             },500);
 
         }, textSpeed * 10);
@@ -315,10 +362,16 @@ $("#creative").click(function () {
 
 
 $("#web").click(function () {
+    if(action=="web") return;
+    action="web";
+
+    HideSoc();
+    hideLang();
     $("#info").css("margin-top", "1%");
-    StopAllTimers();
-    $("#who").fadeOut(1000);
     stopprint = true;
+    StopPrintTimers();
+    $("#who").fadeOut(1000);
+
     ReduceLogo(function () {
         $("#ihead").html("");
         $("#ibody").html("");
@@ -328,7 +381,7 @@ $("#web").click(function () {
             $("#ihead").html(Lang("hWeb"));
 
             setTimeout(function(){
-                printText("#ibody", Lang("bWeb").toUpperCase(), 0, function () {});
+                printText("#ibody", Lang("bWeb").toUpperCase(), 0, function () { action=""; });
             },500);
 
 
@@ -338,10 +391,15 @@ $("#web").click(function () {
 
 
 $("#advertising").click(function () {
+    if(action=="advertising") return;
+    action="advertising";
+
+    HideSoc();
+    hideLang();
     $("#info").css("margin-top", "1%");
-    StopAllTimers();
-    $("#who").fadeOut(1000);
     stopprint = true;
+    StopPrintTimers();
+    $("#who").fadeOut(1000);
     ReduceLogo(function () {
         $("#ihead").html("");
         $("#ibody").html("");
@@ -350,7 +408,7 @@ $("#advertising").click(function () {
             stopprint = false;
             $("#ihead").html(Lang("hAdvertising"));
             setTimeout(function(){
-                printText("#ibody", Lang("bAdvertising").toUpperCase(), 0, function () {});
+                printText("#ibody", Lang("bAdvertising").toUpperCase(), 0, function () { action=""; });
             },500);
 
         }, textSpeed * 10);
@@ -358,6 +416,13 @@ $("#advertising").click(function () {
 });
 
 $("#who").click(function () {
+
+    if(action=="who") return;
+    action="who";
+
+    StopPrintTimers();
+    HideSoc();
+    hideLang();
     $("#info").css("margin-top", "3%");
     $("#who").fadeOut(1000);
     stopprint = true;
@@ -365,16 +430,15 @@ $("#who").click(function () {
 
         $("#ihead").html("");
         $("#ibody").html("");
-
+        hideLang();
         setTimeout(function () {
             stopprint = false;
-            //$("#ihead").removeClass();
-            //$("#ihead").addClass( "who" );
             printText("#ihead", "", 0, function () {
                 printText("#ibody", Lang("bWho").toUpperCase(), 0, function () {
                     printText("#icontact", Lang("Contact").toUpperCase(),
                         0, function () {
                             DrawSoc();
+                            action="";
                         });
                 });
             }, textSpeed * 5);
@@ -391,6 +455,16 @@ function StopAllTimers() {
 }
 
 
+function StopPrintTimers() {
+    //var highestTimeoutId = setTimeout(";");
+    for (var i = 0; i < textPrintTimers.length; i++) {
+        clearTimeout(textPrintTimers[i]);
+    }
+    textPrintTimers=[];
+}
+
+
+
 function Lang(name) {
 
     if (lang == "ENG") {
@@ -400,24 +474,24 @@ function Lang(name) {
                 break;
             case "bCreative":
                 return "We create style, drawing inspiration from the classic art and philosophy.~\
-                Quintessence, metaphysics, sensory perception - our vision is inexpressible by words, unpronounceable in~\
-                any of the living languages. Creative is the way how we communicate with the world, our specialty is the~\
+                Quintessence, metaphysics, sensory perception - our vision is inexpressible by words, unpronounceable in \
+                any of the living languages.~ Creative is the way how we communicate with the world, our specialty is the \
                 ability to see the essence of things and express it in images and words.~";
                 break;
             case "hStrategy":
                 return "strategy";
                 break;
             case "bStrategy":
-                return "META MOSCOW is the marketing research company that synthesizes math, logic and art to create perfect~\
-                business solutions. Analyzing, structuring, vesting the idea in the form we bring the concept to~\
+                return "META MOSCOW is the marketing research company that synthesizes math, logic and art to create perfect \
+                business solutions. ~Analyzing, structuring, vesting the idea in the form we bring the concept to \
                 perfection, completeness, causing your success.~";
                 break;
             case "hWeb":
                 return "digital";
                 break;
             case "bWeb":
-                return "We create web design and writing the program code, we develop websites and mobile~ \
-                applications, write programs and databases, we are engaged in SEO optimization of sites, build algorithms of~\
+                return "We create web design and writing the program code, we develop websites and mobile \
+                applications, write programs and databases, we are engaged in SEO optimization of sites, build algorithms of \
                 landing pages and manage context advertising.~\
                 We may provide a long list of what we can do, but just remember - we can do everything, that is connected to digital.~ ";
                 break;
@@ -425,8 +499,8 @@ function Lang(name) {
                 return "advertising";
                 break;
             case "bAdvertising":
-                return "Proceeding on the goals, we crystallize advertising message tailored to the audience of~ \
-                the brand. We build communication between the brand and the consumer, providing a thin, but strong emotional~\
+                return "Proceeding on the goals, we crystallize advertising message tailored to the audience of \
+                the brand.~ We build communication between the brand and the consumer, providing a thin, but strong emotional \
                 bond that direct the consumer to make the right choice. ~";
                 break;
             case "hWho":
@@ -438,7 +512,7 @@ function Lang(name) {
                 WE BUILD OUR OUTLOOK ON THE AESTHETICS AND PHILOSOPHY, TRYING TO UNDERSTAND THE DEPTH OF THE HUMAN MIND, USING THIS EXPERIENCE TO CREATE MASTERPIECES OF ART OF BRANDING.~~";
                 break;
             case "Contact":
-                return "105066, Moscow, 45 Olkhovskaya St.,bdg 1 ~+74957259669, +74957908780~info@metamoscow.com~~";
+                return "105066, Moscow, 45 Olkhovskaya St.,bdg 1 ~+74957259669~info@metamoscow.com~~";
                 break;
         }
     }
@@ -457,8 +531,8 @@ function Lang(name) {
                 return "cтратегия";
                 break;
             case "bStrategy":
-                return "META MOSCOW – это маркетинговая компания, синтезирующая математику, логику и искусство" +
-                    "для создания идеальных бизнес-решений.~ Анализируя, структурируя, облекая идею в форму, мы" +
+                return "META MOSCOW – это маркетинговая компания, синтезирующая математику, логику и искусство " +
+                    "для создания идеальных бизнес-решений.~ Анализируя, структурируя, облекая идею в форму, мы " +
                     "доводим концепт до совершенства, законченности, обуславливая Ваш успех.~";
                 break;
             case "hWeb":
@@ -474,9 +548,9 @@ function Lang(name) {
                 return "реклама";
                 break;
             case "bAdvertising":
-                return "Исходя из поставленных целей, мы кристаллизуем рекламное сообщение,  адаптированное к" +
-                    "потребностям потребителя  и четко таргетированное на аудиторию бренда. ~Мы строим коммуникацию" +
-                    "между брендом и потребителем, обеспечивая тонкую, но крепкую эмоциональную связь, которая" +
+                return "Исходя из поставленных целей, мы кристаллизуем рекламное сообщение,  адаптированное к " +
+                    "потребностям потребителя  и четко таргетированное на аудиторию бренда. ~Мы строим коммуникацию " +
+                    "между брендом и потребителем, обеспечивая тонкую, но крепкую эмоциональную связь, которая " +
                     "направляет его к принятию необходимых решений.~";
                 break;
             case "hWho":
@@ -488,7 +562,7 @@ function Lang(name) {
                 Мы создаем свои продукты, синтезируя философию и эстетику, постигая глубину разума человека, используя это опыт в своих проектах.~~";
                 break;
             case "Contact":
-                return "105066, Moscow, 45 Olkhovskaya St.,bdg 1 ~+74957259669, +74957908780~info@metamoscow.com~~";
+                return "105066, Москва, ул. Ольховская д. 45 стр. 1 ~+74957259669~info@metamoscow.com~~";
                 break;
         }
     }

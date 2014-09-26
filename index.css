@@ -64,6 +64,8 @@
 
 #ihead{
     font-family: Pushkin;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 #isoc img{
@@ -302,20 +304,19 @@ body{
 
 
 #bottom{
-    top: 94%;
+    top: 100%;
     width: 100%;
     left: 100%;
     height: 2px;
     background-color: black;
     z-index: 1000;
     position: absolute;
+    margin-top: 2px;
 }
 
 
 @-moz-document url-prefix() {
-    #bottom{
-        top: 95%;
-    }
+
 }
 
 #left{
@@ -347,11 +348,12 @@ body{
 }
 
 #ibody{
-    margin-top: 1%;
+    /*margin-top: 1%;*/
     font-family: ISOCTEUR;
     width: 50%;
     display: inline-block;
     text-align: left;
+    line-height: 1.4;
 }
 
 #info{
