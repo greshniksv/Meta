@@ -42,7 +42,7 @@ $("#cross img").click(function () {
 
 $("#lang").click(function(){
 
-    StopAllTimers();
+    StopPrintTimers();
     //StopPrintTimers();
     $("#ihead").html("");
     $("#ibody").html("");
@@ -240,13 +240,14 @@ function BackLogo(finish) {
 function hideLang(){
     $("#lang").fadeOut(1000,function(){
         $("#lang").css("top","-5%");
+        $("#lang").css("top","-5%");
+        $("#lang").fadeIn(1);
     });
 }
 
 function drawLang()
 {
-    $("#lang").css("top","-5%");
-    $("#lang").fadeIn(1);
+
     $("#lang").animate({'top': '5%' }, 400, function () { });
 }
 
@@ -313,7 +314,6 @@ $("#strategy").click(function () {
     if(action=="strategy") return;
     action="strategy";
 
-    hideLang();
     HideSoc();
     $("#info").css("margin-top", "1%");
     stopprint = true;
@@ -339,7 +339,6 @@ $("#creative").click(function () {
     action="creative";
 
     HideSoc();
-    hideLang();
     $("#info").css("margin-top", "1%");
     stopprint = true;
     StopPrintTimers();
@@ -366,7 +365,6 @@ $("#web").click(function () {
     action="web";
 
     HideSoc();
-    hideLang();
     $("#info").css("margin-top", "1%");
     stopprint = true;
     StopPrintTimers();
@@ -395,7 +393,6 @@ $("#advertising").click(function () {
     action="advertising";
 
     HideSoc();
-    hideLang();
     $("#info").css("margin-top", "1%");
     stopprint = true;
     StopPrintTimers();
@@ -422,7 +419,6 @@ $("#who").click(function () {
 
     StopPrintTimers();
     HideSoc();
-    hideLang();
     $("#info").css("margin-top", "3%");
     $("#who").fadeOut(1000);
     stopprint = true;
@@ -430,7 +426,6 @@ $("#who").click(function () {
 
         $("#ihead").html("");
         $("#ibody").html("");
-        hideLang();
         setTimeout(function () {
             stopprint = false;
             printText("#ihead", "", 0, function () {
