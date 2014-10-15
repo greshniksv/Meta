@@ -6,19 +6,18 @@ var lang="ENG";
 var textPrintTimers=[];
 var action ="";
 
-
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }
 
 window.onresize = function(event) {
-    var newr = $("#out").height()-3;
-    $("#bottom").css("top",newr+"px");
+    var newr = ($("#whot").height());
+    $("#who_text").css("line-height", newr+"px");
 };
 
 $(document).ready(function () {
-    var newr = $("#out").height()-3;
-    $("#bottom").css("top",newr+"px");
+    var newr = ($("#whot").height());
+    $("#who_text").css("line-height", newr+"px");
 
     //circle("ind2",0);
     $("#logo_img").fadeOut(1);
@@ -30,8 +29,9 @@ $(document).ready(function () {
 
     $("#logo_img").fadeIn(1000,function(){
         drawMenu(function(){
+            drawLang();
             textPrintTimers[textPrintTimers.length] =
-                setTimeout(function(){ drawWho(function(){ drawLang() }); },1000);
+                setTimeout(function(){ drawWho(function(){  }); },1000);
         });
     });
 });
@@ -41,6 +41,8 @@ $("#cross img").click(function () {
 });
 
 $("#lang").click(function(){
+
+    $("#logo").stop(false,false, false);
 
     StopPrintTimers();
     //StopPrintTimers();
@@ -225,7 +227,8 @@ function BackLogo(finish) {
         });
         $("#logo").fadeIn(1000, function () {
             drawMenu(function(){
-                setTimeout(function(){ drawWho(function(){ drawLang() });
+                drawLang();
+                setTimeout(function(){ drawWho(function(){ });
                     finish(); },1000);
                 //drawWho();
                 //finish();
@@ -451,6 +454,7 @@ function StopAllTimers() {
 
 
 function StopPrintTimers() {
+    stopprint = true;
     //var highestTimeoutId = setTimeout(";");
     for (var i = 0; i < textPrintTimers.length; i++) {
         clearTimeout(textPrintTimers[i]);
